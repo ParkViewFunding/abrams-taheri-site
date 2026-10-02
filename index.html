@@ -73,6 +73,7 @@ p{margin:0}
 .links a:hover{color:var(--ink)}
 .nav .btn{padding:11px 18px}
 @media(max-width:860px){.links{display:none}}
+@media(max-width:600px){.brand .name{font-size:18px}.brand .name small{display:none}.nav .btn{padding:10px 13px;font-size:13px;white-space:nowrap}.nav .wrap{min-height:60px;gap:10px}.topbar .wrap{font-size:12px}}
 
 /* Hero */
 .hero{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
@@ -184,11 +185,128 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 footer nav{display:flex;gap:20px;flex-wrap:wrap}
 footer nav a:hover{color:var(--ink)}
 .concept{margin-top:26px;padding-top:18px;border-top:1px dashed var(--line);font-size:12.5px;max-width:60em}
+
+/* ===== Estimator ===== */
+.est{background:var(--surface);border-block:1px solid var(--line)}
+.est .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.est-form{display:grid;gap:18px}
+.est-form .field label{font-size:13px;font-weight:600;color:var(--ink-2)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{font:inherit;font-size:14px;padding:9px 14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;cursor:pointer;transition:all .15s}
+.seg button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.est-out{background:var(--navy);color:var(--on-navy);padding:36px;border-radius:4px;display:grid;gap:14px;position:sticky;top:96px}
+.est-out .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#d9b36b;font-weight:600}
+.est-out .range{font-family:var(--display);font-size:clamp(34px,4vw,52px);line-height:1;font-variant-numeric:tabular-nums}
+.est-out .bar{height:6px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden}
+.est-out .bar i{display:block;height:100%;background:linear-gradient(90deg,#8f6b2f,#d9b36b);width:20%;transition:width .5s}
+.est-out p{color:var(--on-navy-2);font-size:14.5px}
+.est-out .fine{font-size:12px;color:var(--on-navy-2);border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
+@media(max-width:860px){.est .wrap{grid-template-columns:1fr;gap:32px}.est-out{position:static}}
+
+/* ===== Checklist ===== */
+.check .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.check ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:n}
+.check li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:4px;cursor:pointer;transition:background .15s}
+.check li:hover{background:var(--brass-soft)}
+.check li .box{width:24px;height:24px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;margin-top:2px;color:#fff;font-size:13px}
+.check li[data-done="1"] .box{background:var(--brass)}
+.check li[data-done="1"] .t{text-decoration:line-through;color:var(--ink-3)}
+.check li .t{font-weight:600}
+.check li .d{font-size:14px;color:var(--ink-2);margin-top:2px}
+.check .prog{font-size:13px;color:var(--ink-3);margin-top:14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.check .prog .btn{padding:9px 14px;font-size:13.5px}
+@media(max-width:860px){.check .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* ===== Floating actions ===== */
+.fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;display:grid;gap:10px;justify-items:end}
+.fab button,.fab a{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:14px;border-radius:999px;padding:14px 18px;box-shadow:0 10px 30px rgba(0,0,0,.25);color:#fff;background:var(--navy-2)}
+.fab .chat-btn{background:var(--brass)}
+.fab .chat-btn:hover{background:#8f6b2f}
+.fab .mini{display:none}
+@media(max-width:860px){.fab{left:16px;right:16px;grid-template-columns:1fr 1fr 1fr;gap:8px;justify-items:stretch}.fab .mini{display:inline-flex}.fab button,.fab a{justify-content:center;padding:13px 10px;border-radius:12px}.fab .chat-btn span.x{display:none}footer{padding-bottom:110px}}
+
+/* ===== Chat ===== */
+.chat{position:fixed;right:20px;bottom:calc(84px + env(safe-area-inset-bottom,0px));width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 120px);background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.3);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;z-index:50}
+.chat[hidden]{display:none}
+.chat-head{background:var(--navy);color:var(--on-navy);padding:14px 16px;display:flex;align-items:center;gap:12px}
+.chat-head .av{width:36px;height:36px;border-radius:50%;background:var(--brass);display:grid;place-items:center;font-family:var(--display);font-size:16px;color:#fff}
+.chat-head b{display:block;font-size:15px}
+.chat-head small{font-size:12px;color:var(--on-navy-2);display:flex;align-items:center;gap:6px}
+.chat-head small::before{content:"";width:7px;height:7px;border-radius:50%;background:#5fcf80}
+.chat-head button{margin-left:auto;background:none;border:0;color:var(--on-navy-2);font-size:22px;cursor:pointer;line-height:1}
+.chat-log{overflow-y:auto;padding:16px;display:grid;gap:10px;align-content:start;background:var(--bg)}
+.msg{max-width:84%;padding:10px 14px;border-radius:14px;font-size:14.5px;line-height:1.45;animation:pop .2s ease}
+.msg.bot{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:4px;justify-self:start}
+.msg.me{background:var(--navy);color:var(--on-navy);border-bottom-right-radius:4px;justify-self:end}
+.msg.typing{display:flex;gap:4px;padding:12px 14px}
+.msg.typing i{width:6px;height:6px;border-radius:50%;background:var(--ink-3);animation:blink 1s infinite}
+.msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
+.quick{display:flex;flex-wrap:wrap;gap:6px;justify-self:start;max-width:92%}
+.quick button{font:inherit;font-size:13.5px;padding:8px 12px;border:1px solid var(--brass);color:var(--brass);background:transparent;border-radius:999px;cursor:pointer}
+.quick button:hover{background:var(--brass);color:#fff}
+.chat-in{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:var(--surface)}
+.chat-in input{flex:1;min-width:0;font:inherit;font-size:14.5px;padding:10px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink)}
+.chat-in button{font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:0 16px;cursor:pointer}
+@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media(max-width:860px){.chat{right:16px;left:16px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px));height:min(560px,calc(100vh - 110px))}}
+
+/* ===== Portal ===== */
+.nav .login{font-size:14px;font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px;margin-right:4px}
+.nav .login:hover{color:var(--ink)}
+.nav .actions{display:flex;align-items:center;gap:16px}
+@media(max-width:600px){.nav .login span{display:none}}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(10,14,22,.6);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px}
+.modal[hidden]{display:none}
+.portal{width:min(960px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--bg);border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative}
+.portal .close{position:absolute;top:12px;right:12px;background:var(--surface);border:1px solid var(--line);border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer;color:var(--ink);z-index:2}
+.login-card{max-width:420px;margin:0 auto;padding:48px 28px;display:grid;gap:14px}
+.login-card h3{font-size:30px}
+.login-card p{color:var(--ink-2);font-size:15px}
+.demo-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--brass);background:var(--brass-soft);padding:4px 9px;border-radius:4px;justify-self:start}
+.dash{display:none}
+.portal[data-view="dash"] .login-card{display:none}
+.portal[data-view="dash"] .dash{display:block}
+.dash-top{background:var(--navy);color:var(--on-navy);padding:28px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:end}
+.dash-top h3{font-size:26px;color:var(--on-navy)}
+.dash-top .sub{color:var(--on-navy-2);font-size:14px;margin-top:4px}
+.dash-top .pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.dash-body{padding:28px 32px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;min-width:0}
+.card h4{font-family:var(--body);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;font-weight:700}
+.stepper{display:grid;gap:0}
+.stp{display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:start;padding-bottom:18px;position:relative}
+.stp::before{content:"";position:absolute;left:12px;top:26px;bottom:0;width:2px;background:var(--line)}
+.stp:last-child::before{display:none}
+.stp .dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:var(--surface);display:grid;place-items:center;font-size:12px;color:#fff}
+.stp.done .dot{background:var(--brass);border-color:var(--brass)}
+.stp.now .dot{border-color:var(--brass);box-shadow:0 0 0 4px var(--brass-soft)}
+.stp b{display:block;font-size:15px}
+.stp span{font-size:13px;color:var(--ink-2)}
+.stp.now b{color:var(--brass)}
+.docs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.docs li{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:10px 0;border-bottom:1px solid var(--line)}
+.docs li:last-child{border:0}
+.docs .st{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.docs .ok{color:#2f8f5b}.docs .pend{color:var(--brass)}
+.thread{display:grid;gap:10px}
+.thread .m{font-size:14px;padding:10px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.thread .m small{display:block;color:var(--ink-3);font-size:12px;margin-top:4px}
+.thread .m.me{background:var(--brass-soft);border-color:transparent}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;font-size:14px}
+.kv b{display:block;font-size:12px;color:var(--ink-3);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+@media(max-width:860px){.dash-body{grid-template-columns:1fr;padding:20px}.dash-top{padding:22px 20px}}
+
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.25);border-radius:999px;overflow:hidden;margin-left:14px;vertical-align:middle}
+.lang button{font:inherit;font-size:11.5px;font-weight:700;letter-spacing:.06em;padding:4px 9px;border:0;background:transparent;color:var(--on-navy-2);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--brass);color:#fff}
+@keyframes pulse{0%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 0 rgba(168,128,60,.6)}100%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 16px rgba(168,128,60,0)}}
+.fab .chat-btn.pulse{animation:pulse 1.6s ease-out 3}
 </style>
 
 <div class="topbar"><div class="wrap">
   <span>Phone lines open <strong>24 hours a day, 7 days a week</strong></span>
-  <span>Century City &nbsp;·&nbsp; Woodland Hills &nbsp;·&nbsp; <strong>310.894.8000</strong></span>
+  <span>Century City &nbsp;·&nbsp; Woodland Hills &nbsp;·&nbsp; <strong>310.894.8000</strong><span class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></span></span>
 </div></div>
 
 <header class="nav"><div class="wrap">
@@ -203,7 +321,10 @@ footer nav a:hover{color:var(--ink)}
     <a href="#process">How It Works</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="btn btn-brass" href="#contact">Free Case Evaluation</a>
+  <div class="actions">
+    <a class="login" href="#portal" data-portal><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Client Login</span></a>
+    <a class="btn btn-brass" href="#contact">Free Case Evaluation</a>
+  </div>
 </div></header>
 
 <section class="hero" id="top"><div class="photo" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div><div class="wrap">
@@ -331,6 +452,55 @@ footer nav a:hover{color:var(--ink)}
   </div>
 </div></section>
 
+
+<section class="est" id="estimate"><div class="wrap">
+  <div>
+    <p class="eyebrow">Case value estimator</p>
+    <h2 style="margin-top:12px;font-size:clamp(30px,3.6vw,44px)">What could my case be worth?</h2>
+    <p style="color:var(--ink-2);margin:16px 0 28px;max-width:34em">Answer four questions for an educational range. Every case is different, and the only real answer comes from an attorney who has reviewed your facts.</p>
+    <div class="est-form">
+      <div class="field"><label>Type of injury</label>
+        <div class="seg" data-k="injury">
+          <button type="button" data-v="soft" aria-pressed="true">Soft tissue / whiplash</button>
+          <button type="button" data-v="fracture" aria-pressed="false">Broken bone</button>
+          <button type="button" data-v="surgery" aria-pressed="false">Injury requiring surgery</button>
+          <button type="button" data-v="severe" aria-pressed="false">Severe or permanent</button>
+        </div>
+      </div>
+      <div class="field"><label>Medical treatment so far</label>
+        <div class="seg" data-k="treat">
+          <button type="button" data-v="none" aria-pressed="false">None yet</button>
+          <button type="button" data-v="er" aria-pressed="true">ER or urgent care</button>
+          <button type="button" data-v="pt" aria-pressed="false">Ongoing therapy</button>
+          <button type="button" data-v="spec" aria-pressed="false">Specialist / surgery</button>
+        </div>
+      </div>
+      <div class="field"><label>Time off work</label>
+        <div class="seg" data-k="work">
+          <button type="button" data-v="0" aria-pressed="true">None</button>
+          <button type="button" data-v="1" aria-pressed="false">Under 2 weeks</button>
+          <button type="button" data-v="2" aria-pressed="false">2 to 8 weeks</button>
+          <button type="button" data-v="3" aria-pressed="false">More than 2 months</button>
+        </div>
+      </div>
+      <div class="field"><label>Who was at fault?</label>
+        <div class="seg" data-k="fault">
+          <button type="button" data-v="them" aria-pressed="true">Clearly the other party</button>
+          <button type="button" data-v="shared" aria-pressed="false">Shared or disputed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="est-out">
+    <span class="lbl">Estimated settlement range</span>
+    <div class="range" id="est-range">$7,500 – $25,000</div>
+    <div class="bar"><i id="est-bar"></i></div>
+    <p id="est-note">Soft-tissue claims with emergency treatment and clear fault typically resolve in this range in Los Angeles County.</p>
+    <a class="btn btn-brass" href="#contact" style="justify-self:start">Get a real evaluation, free</a>
+    <p class="fine">This tool is for general information only. It is not legal advice, not a guarantee, and does not create an attorney-client relationship. California applies comparative fault, and insurance policy limits can cap recovery.</p>
+  </div>
+</div></section>
+
 <div class="band" aria-label="Los Angeles">
   <div class="band-shade"></div>
   <div class="wrap band-text">
@@ -339,6 +509,27 @@ footer nav a:hover{color:var(--ink)}
     <p>Hospital, home or either of our offices. If you can't travel after an accident, we will meet you where you are.</p>
   </div>
 </div>
+
+<section class="check" id="checklist"><div class="wrap">
+  <div>
+    <p class="eyebrow">Just had an accident?</p>
+    <h2 style="margin-top:12px;font-size:clamp(30px,3.6vw,44px)">Do these seven things first.</h2>
+    <p style="color:var(--ink-2);margin-top:16px;max-width:30em">Tap each step as you go. Your progress is saved on this phone. If anything is unclear, call us and we'll walk you through it.</p>
+    <div class="prog">
+      <span id="chk-prog">0 of 7 done</span>
+      <a class="btn btn-ink" id="chk-sms" href="sms:3108948000">Text us for help</a>
+    </div>
+  </div>
+  <ol id="chk">
+    <li><span class="box">✓</span><div><div class="t">Get to safety and call 911</div><div class="d">Ask for police and paramedics even if you feel fine. Adrenaline hides injuries.</div></div></li>
+    <li><span class="box">✓</span><div><div class="t">Photograph everything</div><div class="d">Vehicles, damage, the scene, skid marks, the other driver's license and insurance card.</div></div></li>
+    <li><span class="box">✓</span><div><div class="t">Get witness names and numbers</div><div class="d">Witnesses leave fast. A phone number now is worth more than a statement later.</div></div></li>
+    <li><span class="box">✓</span><div><div class="t">See a doctor within 24 hours</div><div class="d">A gap in treatment is the first thing insurers use to reduce your claim.</div></div></li>
+    <li><span class="box">✓</span><div><div class="t">Do not give a recorded statement</div><div class="d">You are not required to speak with the other driver's insurance company. Politely decline.</div></div></li>
+    <li><span class="box">✓</span><div><div class="t">Do not post about it online</div><div class="d">Insurers review social media. A photo of you smiling can be used against you.</div></div></li>
+    <li><span class="box">✓</span><div><div class="t">Call Abrams &amp; Taheri at 310.894.8000</div><div class="d">Free evaluation, 24/7. We handle the insurers from here.</div></div></li>
+  </ol>
+</div></section>
 
 <section class="contact" id="contact"><div class="wrap">
   <div>
@@ -400,10 +591,353 @@ footer nav a:hover{color:var(--ink)}
     <a href="#practice">Practice Areas</a><a href="#attorneys">Attorneys</a><a href="#contact">Contact</a><a href="https://abramsandtaheri.com" target="_blank" rel="noopener">Current site</a>
   </nav>
 </div>
-<div class="wrap"><p class="concept">Website redesign concept prepared for the Law Offices of Abrams &amp; Taheri, October 2026. This is a design mockup, not the firm's live website. Practice areas, office addresses and phone number are taken from abramsandtaheri.com; attorney bios are placeholders. Photography: Unsplash (free license), to be replaced with the firm's own photos.</p></div>
+<div class="wrap"><p class="concept">Website redesign concept prepared for the Law Offices of Abrams &amp; Taheri, October 2026. This is a design mockup, not the firm's live website. Practice areas, office addresses and phone number are taken from abramsandtaheri.com; attorney bios are placeholders. The chat assistant, case estimator and client portal are interactive demonstrations with sample data. Photography: Unsplash (free license), to be replaced with the firm's own photos.</p></div>
 </footer>
 
+
+<div class="fab" id="fab">
+  <a class="mini" href="tel:3108948000"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6.2 6.2l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> Call</a>
+  <a class="mini" href="sms:3108948000"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Text</a>
+  <button class="chat-btn" id="chat-open" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg> <span class="x">Chat with us</span><span class="mini">Chat</span></button>
+</div>
+
+<div class="chat" id="chat" hidden role="dialog" aria-label="Intake assistant">
+  <div class="chat-head"><div class="av">A·T</div><div><b>Abrams &amp; Taheri</b><small>Intake assistant · replies instantly</small></div><button type="button" id="chat-close" aria-label="Close chat">×</button></div>
+  <div class="chat-log" id="chat-log"></div>
+  <form class="chat-in" id="chat-form"><input id="chat-input" type="text" placeholder="Type a message…" autocomplete="off"><button type="submit">Send</button></form>
+</div>
+
+<div class="modal" id="portal-modal" hidden>
+  <div class="portal" id="portal" data-view="login" role="dialog" aria-label="Client portal">
+    <button class="close" type="button" id="portal-close" aria-label="Close">×</button>
+    <div class="login-card">
+      <span class="demo-tag">Demo</span>
+      <h3>Client portal</h3>
+      <p>Track your case, upload documents and message your attorney securely, 24/7.</p>
+      <div class="field"><label for="p-email">Email</label><input id="p-email" type="email" value="client@example.com" readonly></div>
+      <div class="field"><label for="p-pass">Password</label><input id="p-pass" type="password" value="demo-demo" readonly></div>
+      <button class="btn btn-brass" type="button" id="portal-login" style="justify-self:stretch;justify-content:center">Sign in to demo portal</button>
+      <p style="font-size:12.5px;color:var(--ink-3)">This is a preview with sample data. No real client information is shown.</p>
+    </div>
+    <div class="dash">
+      <div class="dash-top">
+        <div><span class="demo-tag" style="background:rgba(255,255,255,.12);color:#d9b36b">Demo · sample case</span><h3 style="margin-top:10px">Welcome back, Maria</h3><div class="sub">Case #AT-2026-0417 · Rear-end collision, Ventura Blvd · Opened Jun 12, 2026</div></div>
+        <span class="pill">Status: Demand sent</span>
+      </div>
+      <div class="dash-body">
+        <div style="display:grid;gap:28px">
+          <div class="card"><h4>Case progress</h4>
+            <div class="stepper">
+              <div class="stp done"><span class="dot">✓</span><div><b>Intake &amp; investigation</b><span>Police report, photos and witness statements collected</span></div></div>
+              <div class="stp done"><span class="dot">✓</span><div><b>Medical treatment</b><span>Treatment completed Sep 3 · records requested from 3 providers</span></div></div>
+              <div class="stp now"><span class="dot"></span><div><b>Demand sent to insurer</b><span>Sent Sep 24 · insurer has 30 days to respond</span></div></div>
+              <div class="stp"><span class="dot"></span><div><b>Negotiation</b><span>We review every offer with you before responding</span></div></div>
+              <div class="stp"><span class="dot"></span><div><b>Settlement or lawsuit</b><span>Funds typically disbursed within 30 days of settlement</span></div></div>
+            </div>
+          </div>
+          <div class="card"><h4>Messages</h4>
+            <div class="thread">
+              <div class="m">Hi Maria, the demand package went out to the insurer this morning. I'll let you know the moment we hear back.<small>Alan Abrams · Sep 24, 9:41 AM</small></div>
+              <div class="m me">Thank you! Do I need to do anything on my end?<small>You · Sep 24, 10:02 AM</small></div>
+              <div class="m">Nothing for now. Keep any new medical bills and send them here. If the adjuster calls you directly, don't discuss the case; give them our number.<small>Alan Abrams · Sep 24, 10:15 AM</small></div>
+            </div>
+            <div class="chat-in" style="border:0;padding:12px 0 0"><input type="text" id="p-msg" placeholder="Message your attorney…"><button type="button">Send</button></div>
+          </div>
+        </div>
+        <div style="display:grid;gap:28px;align-content:start">
+          <div class="card"><h4>Your team</h4>
+            <div class="kv"><div><b>Attorney</b>Alan K. Abrams</div><div><b>Case manager</b>Intake desk</div><div><b>Direct line</b>310.894.8000</div><div><b>Next update</b>On insurer response</div></div>
+          </div>
+          <div class="card"><h4>Documents</h4>
+            <ul class="docs">
+              <li><span>Retainer agreement</span><span class="st ok">Signed</span></li>
+              <li><span>Police report</span><span class="st ok">Received</span></li>
+              <li><span>Medical records (3)</span><span class="st ok">Received</span></li>
+              <li><span>Wage loss letter</span><span class="st pend">Needed</span></li>
+              <li><span>Demand letter</span><span class="st ok">Sent</span></li>
+            </ul>
+            <button class="btn btn-ink" type="button" style="margin-top:14px;padding:10px 14px;font-size:13.5px">Upload a document</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+/* ===== Estimator ===== */
+(function(){
+  const base={soft:[7500,25000],fracture:[25000,85000],surgery:[75000,250000],severe:[250000,1000000]};
+  const treat={none:.6,er:1,pt:1.35,spec:1.7};
+  const work=[1,1.1,1.3,1.6];
+  const fault={them:1,shared:.65};
+  const notes={
+    soft:'Soft-tissue claims with emergency treatment and clear fault typically resolve in this range in Los Angeles County.',
+    fracture:'Fractures add documented medical specials and a longer recovery, which raises the value of the pain-and-suffering component.',
+    surgery:'Surgical cases are usually policy-limits cases. The range depends heavily on the available insurance coverage.',
+    severe:'Catastrophic injuries are valued on lifetime care and lost earning capacity. These cases are almost always litigated.'};
+  const state={injury:'soft',treat:'er',work:'0',fault:'them'};
+  const f=n=>'$'+(Math.round(n/500)*500).toLocaleString('en-US');
+  function render(){
+    const [lo,hi]=base[state.injury];const m=treat[state.treat]*work[+state.work]*fault[state.fault];
+    const a=lo*m,b=hi*m;
+    document.getElementById('est-range').textContent=f(a)+' – '+f(b)+(state.injury==='severe'?'+':'');
+    document.getElementById('est-bar').style.width=Math.min(100,Math.max(8,Math.log10(b)/6*100-40))+'%';
+    document.getElementById('est-note').textContent=notes[state.injury]+(state.fault==='shared'?' Shared fault reduces recovery by your percentage of responsibility.':'')+(state.treat==='none'?' Getting treatment now is the single biggest thing you can do to protect this claim.':'');
+  }
+  document.querySelectorAll('.seg').forEach(seg=>seg.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;seg.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');state[seg.dataset.k]=b.dataset.v;render();}));
+  render();
+})();
+
+/* ===== Checklist ===== */
+(function(){
+  const ol=document.getElementById('chk'),items=[...ol.children];let saved=[];
+  try{saved=JSON.parse(localStorage.getItem('at-chk')||'[]')}catch(e){}
+  items.forEach((li,i)=>{if(saved[i])li.dataset.done='1';li.addEventListener('click',()=>{li.dataset.done=li.dataset.done==='1'?'0':'1';upd();});});
+  function upd(){const d=items.map(li=>li.dataset.done==='1');document.getElementById('chk-prog').textContent=d.filter(Boolean).length+' of 7 done';try{localStorage.setItem('at-chk',JSON.stringify(d))}catch(e){}}
+  upd();
+})();
+
+/* ===== Chat ===== */
+(function(){
+  const chat=document.getElementById('chat'),log=document.getElementById('chat-log'),form=document.getElementById('chat-form'),input=document.getElementById('chat-input');
+  const open=document.getElementById('chat-open'),close=document.getElementById('chat-close');
+  let step=0,data={},started=false;
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  function add(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+  async function bot(html,delay){const t=add('bot typing','<i></i><i></i><i></i>');await wait(delay||700+Math.min(1200,html.length*12));t.className='msg bot';t.innerHTML=html;log.scrollTop=log.scrollHeight;}
+  function quick(opts){const q=document.createElement('div');q.className='quick';opts.forEach(o=>{const b=document.createElement('button');b.type='button';b.textContent=o;b.onclick=()=>{q.remove();answer(o);};q.appendChild(b);});log.appendChild(q);log.scrollTop=log.scrollHeight;}
+  const flow=[
+    {q:'Hi, I\'m the Abrams &amp; Taheri intake assistant. I can get an attorney on the phone with you fast. First, what happened?',opts:['Car or motorcycle accident','Slip, trip or fall','Dog bite','Something else']},
+    {q:'I\'m sorry you\'re dealing with that. When did it happen?',opts:['Today','This week','This month','Longer ago']},
+    {q:'Have you seen a doctor or been to the ER?',opts:['Yes','Not yet','Still being treated']},
+    {q:'Has an insurance company contacted you?',opts:['Yes','No','Not sure']},
+    {q:'Got it. What\'s your first name?',free:true},
+    {q:'Thanks, {name}. What\'s the best phone number to reach you?',free:true}
+  ];
+  async function ask(){const s=flow[step];if(!s)return;await bot(s.q.replace('{name}',data.name||''));if(s.opts)quick(s.opts);else{input.focus();}}
+  async function answer(txt){
+    add('me',txt.replace(/</g,'&lt;'));
+    const s=flow[step];
+    if(step===2&&txt==='Not yet'){await bot('Please get checked out today, even if you feel okay. It protects your health and your claim. We can recommend a doctor who will see you right away.');}
+    if(step===3&&txt==='Yes'){await bot('Important: you don\'t have to give them a recorded statement. Politely tell them your attorney will be in touch.');}
+    if(step===4)data.name=txt.trim().split(' ')[0];
+    if(step===5)data.phone=txt;
+    step++;
+    if(step<flow.length){await ask();}
+    else{
+      const now=new Date();const late=now.getHours()>=19||now.getHours()<8;
+      await bot('Perfect, '+data.name+'. An attorney will call you at <b>'+data.phone.replace(/</g,'&lt;')+'</b> '+(late?'first thing in the morning':'within the hour')+'. If you\'d rather talk now, our line is open 24/7: <b>310.894.8000</b>.');
+      await bot('Until then: keep any paperwork, photos and bills together, and don\'t discuss the accident with the other side\'s insurer. We\'ll handle that.');
+      quick(['Start over']);
+    }
+  }
+  form.addEventListener('submit',e=>{e.preventDefault();const v=input.value.trim();if(!v)return;input.value='';if(step>=flow.length){return;}const s=flow[step];if(s.free)answer(v);else{add('me',v.replace(/</g,'&lt;'));bot('Just tap one of the options above so I can route you correctly.');}});
+  log.addEventListener('click',e=>{if(e.target.textContent==='Start over'){log.innerHTML='';step=0;data={};ask();}});
+  function show(){chat.hidden=false;if(!started){started=true;ask();}}
+  open.addEventListener('click',()=>chat.hidden?show():chat.hidden=true);
+  close.addEventListener('click',()=>chat.hidden=true);
+  // Auto-open invitation after 12s on first visit
+  setTimeout(()=>{if(chat.hidden&&!started){open.classList.add('pulse');}},12000);
+})();
+
+/* ===== Portal ===== */
+(function(){
+  const m=document.getElementById('portal-modal'),p=document.getElementById('portal');
+  document.querySelectorAll('[data-portal]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();p.dataset.view='login';m.hidden=false;}));
+  document.getElementById('portal-close').addEventListener('click',()=>m.hidden=true);
+  m.addEventListener('click',e=>{if(e.target===m)m.hidden=true;});
+  document.getElementById('portal-login').addEventListener('click',function(){this.textContent='Signing in…';setTimeout(()=>{p.dataset.view='dash';this.textContent='Sign in to demo portal';p.scrollTop=0;},700);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){m.hidden=true;document.getElementById('chat').hidden=true;}});
+})();
+</script>
+
+<script>
+
+/* ===== Language toggle (EN/ES) ===== */
+(function(){
+const ES={
+"Phone lines open":"Líneas telefónicas abiertas",
+"24 hours a day, 7 days a week":"las 24 horas, los 7 días de la semana",
+"Attorneys at Law":"Abogados",
+"Practice Areas":"Áreas de práctica",
+"The Firm":"La firma",
+"Attorneys":"Abogados",
+"How It Works":"Cómo funciona",
+"Contact":"Contacto",
+"Free Case Evaluation":"Evaluación gratuita",
+"Los Angeles · Personal Injury & General Practice":"Los Ángeles · Lesiones personales y práctica general",
+"Injured? You shouldn't have to":"¿Lesionado? No debería tener que",
+"fight the insurance company":"pelear con la aseguradora",
+"alone.":"solo.",
+"The Law Offices of Abrams & Taheri represents accident victims and their families across Los Angeles, from Century City to the Valley. Free case evaluations, with phone lines open around the clock.":"Las Oficinas Legales de Abrams & Taheri representan a víctimas de accidentes y a sus familias en todo Los Ángeles, desde Century City hasta el Valle. Evaluaciones gratuitas, con líneas abiertas a toda hora.",
+"Start your free evaluation":"Comience su evaluación gratuita",
+"See what we handle":"Vea lo que manejamos",
+"Phone lines answered day and night":"Atendemos el teléfono día y noche",
+"Free":"Gratis",
+"Case evaluation, no obligation":"Evaluación de su caso, sin compromiso",
+"Offices: Century City & Woodland Hills":"Oficinas: Century City y Woodland Hills",
+"Injury law first. A full-service firm behind it.":"Primero, lesiones personales. Detrás, una firma de servicio completo.",
+"Most of our clients come to us after a crash or a fall. Many stay with us for the rest of what life brings: a business, a property, a family's immigration petition, an estate plan.":"La mayoría de nuestros clientes llegan después de un choque o una caída. Muchos se quedan con nosotros para lo que la vida traiga: un negocio, una propiedad, una petición migratoria familiar, un plan patrimonial.",
+"Core practice":"Práctica principal",
+"Personal Injury":"Lesiones personales",
+"Car accidents":"Accidentes de auto",
+"Motorcycle":"Motocicleta",
+"Pedestrian":"Peatón",
+"Bicycle":"Bicicleta",
+"Truck accidents":"Accidentes de camión",
+"Wrongful death":"Muerte por negligencia",
+"Laser burn injuries":"Quemaduras por láser",
+"Discuss your case →":"Hable de su caso →",
+"Premises Liability":"Responsabilidad de locales",
+"Slip & fall":"Resbalones y caídas",
+"Trip & fall":"Tropiezos y caídas",
+"Dog bites":"Mordidas de perro",
+"Unsafe premises":"Locales inseguros",
+"Immigration":"Inmigración",
+"Family petitions":"Peticiones familiares",
+"Employment petitions":"Peticiones laborales",
+"Investment visas":"Visas de inversión",
+"Green cards":"Residencia (green card)",
+"U.S. citizenship":"Ciudadanía",
+"Non-immigrant visas":"Visas de no inmigrante",
+"Learn more →":"Más información →",
+"Business":"Negocios",
+"Business Law":"Derecho empresarial",
+"Transactions":"Transacciones",
+"Contracts":"Contratos",
+"Business litigation":"Litigio comercial",
+"Property":"Propiedad",
+"Real Estate Law":"Bienes raíces",
+"Litigation":"Litigio",
+"Partition actions":"Acciones de partición",
+"Loan modification & foreclosure":"Modificación de préstamo y ejecución hipotecaria",
+"Subdivision":"Subdivisión",
+"Property tax appeals":"Apelaciones de impuesto predial",
+"Estate planning":"Planificación patrimonial",
+"Wills & Trusts":"Testamentos y fideicomisos",
+"Living trusts":"Fideicomisos en vida",
+"Wills":"Testamentos",
+"Powers of attorney":"Poderes notariales",
+"Our dedication to quality, understanding of the law, trust and respect are the foundation of our long-standing relationships with clients and with our community.":"Nuestra dedicación a la calidad, el conocimiento de la ley, la confianza y el respeto son la base de nuestras relaciones duraderas con los clientes y con nuestra comunidad.",
+"Law Offices of Abrams & Taheri":"Oficinas Legales de Abrams & Taheri",
+"You deal with a lawyer, not a call center":"Habla con un abogado, no con un centro de llamadas",
+"Your case is handled by the attorneys whose names are on the door. You will have a direct line and you will get a straight answer.":"Su caso lo manejan los abogados cuyos nombres están en la puerta. Tendrá una línea directa y una respuesta clara.",
+"We answer, day or night":"Contestamos, de día o de noche",
+"Accidents don't keep business hours. Our phone lines are open around the clock, and we will meet you at either office or wherever is easiest for you.":"Los accidentes no tienen horario. Nuestras líneas están abiertas a toda hora y nos reunimos con usted en cualquiera de nuestras oficinas o donde le resulte más fácil.",
+"One firm for the whole picture":"Una sola firma para todo",
+"Injury, immigration, business, real estate and estate planning under one roof means fewer handoffs and a team that already knows your story.":"Lesiones, inmigración, negocios, bienes raíces y planificación patrimonial bajo un mismo techo: menos traspasos y un equipo que ya conoce su historia.",
+"The partners you'll work with":"Los socios con quienes trabajará",
+"Two founding partners, one standard: treat every client's case as if it were our own.":"Dos socios fundadores, un mismo estándar: tratar cada caso como si fuera el nuestro.",
+"Founding Partner":"Socio fundador",
+"Represents injured clients and their families in negotiations and litigation against insurers, property owners and commercial defendants.":"Representa a clientes lesionados y a sus familias en negociaciones y litigios contra aseguradoras, propietarios y demandados comerciales.",
+"Education and bar admissions to be supplied by the firm.":"Formación y admisiones al colegio de abogados por confirmar.",
+"Advises clients across the firm's transactional practices, including business, real estate, immigration and estate planning matters.":"Asesora a clientes en las prácticas transaccionales de la firma: negocios, bienes raíces, inmigración y planificación patrimonial.",
+"How an injury case works":"Cómo funciona un caso de lesiones",
+"From your first call to your settlement":"Desde su primera llamada hasta su acuerdo",
+"Most people have never hired a lawyer before. Here is what to expect.":"La mayoría nunca ha contratado a un abogado. Esto es lo que puede esperar.",
+"Free evaluation":"Evaluación gratuita",
+"Call or send the form. An attorney reviews what happened and tells you plainly whether you have a case.":"Llame o envíe el formulario. Un abogado revisa lo ocurrido y le dice con claridad si tiene un caso.",
+"We take over":"Nos hacemos cargo",
+"We notify the insurers, gather the police report, medical records and evidence, and handle every call so you can focus on recovery.":"Notificamos a las aseguradoras, reunimos el reporte policial, los registros médicos y la evidencia, y atendemos cada llamada para que usted se enfoque en recuperarse.",
+"Treatment & build-up":"Tratamiento y preparación",
+"We help you get the medical care you need and document your injuries, lost wages and expenses as the case develops.":"Le ayudamos a recibir la atención médica que necesita y documentamos sus lesiones, salarios perdidos y gastos mientras avanza el caso.",
+"Resolution":"Resolución",
+"We negotiate for full value and are prepared to file suit and take your case to trial if the insurer won't be fair.":"Negociamos por el valor completo y estamos listos para demandar y llevar su caso a juicio si la aseguradora no es justa.",
+"Serving all of Los Angeles":"Servimos a todo Los Ángeles",
+"From the Westside to the Valley, we come to you.":"Del Westside al Valle, vamos a donde usted esté.",
+"Hospital, home or either of our offices. If you can't travel after an accident, we will meet you where you are.":"Hospital, casa o cualquiera de nuestras oficinas. Si no puede viajar después de un accidente, lo visitamos.",
+"Talk to an attorney today":"Hable hoy con un abogado",
+"Open 24 hours a day, 7 days a week. Free case evaluations.":"Abierto las 24 horas, los 7 días. Evaluaciones gratuitas.",
+"Main office":"Oficina principal",
+"Satellite office":"Oficina satélite",
+"Directions →":"Cómo llegar →",
+"Free case evaluation":"Evaluación gratuita de su caso",
+"Tell us what happened. An attorney will get back to you, usually the same day.":"Cuéntenos qué pasó. Un abogado le responderá, normalmente el mismo día.",
+"Full name":"Nombre completo",
+"Phone":"Teléfono",
+"Email":"Correo electrónico",
+"Type of matter":"Tipo de asunto",
+"Car / motorcycle / truck accident":"Accidente de auto / moto / camión",
+"Pedestrian or bicycle accident":"Accidente de peatón o bicicleta",
+"Slip, trip or fall":"Resbalón, tropiezo o caída",
+"Dog bite":"Mordida de perro",
+"Business or real estate":"Negocios o bienes raíces",
+"Wills & trusts":"Testamentos y fideicomisos",
+"Something else":"Otro asunto",
+"What happened?":"¿Qué pasó?",
+"Request my free evaluation":"Solicitar mi evaluación gratuita",
+"Submitting this form does not create an attorney-client relationship. Please do not include confidential details until we have confirmed representation.":"Enviar este formulario no crea una relación abogado-cliente. No incluya detalles confidenciales hasta que confirmemos la representación.",
+"Current site":"Sitio actual",
+"Case value estimator":"Calculadora de valor del caso",
+"What could my case be worth?":"¿Cuánto podría valer mi caso?",
+"Answer four questions for an educational range. Every case is different, and the only real answer comes from an attorney who has reviewed your facts.":"Responda cuatro preguntas para ver un rango educativo. Cada caso es distinto, y la única respuesta real viene de un abogado que haya revisado sus hechos.",
+"Type of injury":"Tipo de lesión",
+"Soft tissue / whiplash":"Tejido blando / latigazo",
+"Broken bone":"Fractura",
+"Injury requiring surgery":"Lesión que requiere cirugía",
+"Severe or permanent":"Grave o permanente",
+"Medical treatment so far":"Tratamiento médico hasta ahora",
+"None yet":"Todavía ninguno",
+"ER or urgent care":"Emergencias o urgencias",
+"Ongoing therapy":"Terapia en curso",
+"Specialist / surgery":"Especialista / cirugía",
+"Time off work":"Tiempo sin trabajar",
+"None":"Nada",
+"Under 2 weeks":"Menos de 2 semanas",
+"2 to 8 weeks":"De 2 a 8 semanas",
+"More than 2 months":"Más de 2 meses",
+"Who was at fault?":"¿Quién tuvo la culpa?",
+"Clearly the other party":"Claramente la otra parte",
+"Shared or disputed":"Compartida o en disputa",
+"Estimated settlement range":"Rango estimado de acuerdo",
+"Get a real evaluation, free":"Obtenga una evaluación real, gratis",
+"This tool is for general information only. It is not legal advice, not a guarantee, and does not create an attorney-client relationship. California applies comparative fault, and insurance policy limits can cap recovery.":"Esta herramienta es solo informativa. No es asesoría legal, no es una garantía y no crea una relación abogado-cliente. California aplica culpa comparativa, y los límites de la póliza pueden limitar la recuperación.",
+"Just had an accident?":"¿Acaba de tener un accidente?",
+"Do these seven things first.":"Haga estas siete cosas primero.",
+"Tap each step as you go. Your progress is saved on this phone. If anything is unclear, call us and we'll walk you through it.":"Marque cada paso. Su progreso se guarda en este teléfono. Si algo no está claro, llámenos y lo guiamos.",
+"Text us for help":"Envíenos un mensaje",
+"Get to safety and call 911":"Póngase a salvo y llame al 911",
+"Ask for police and paramedics even if you feel fine. Adrenaline hides injuries.":"Pida policía y paramédicos aunque se sienta bien. La adrenalina oculta lesiones.",
+"Photograph everything":"Fotografíe todo",
+"Vehicles, damage, the scene, skid marks, the other driver's license and insurance card.":"Vehículos, daños, la escena, marcas de frenado, la licencia y la tarjeta de seguro del otro conductor.",
+"Get witness names and numbers":"Pida nombres y teléfonos de testigos",
+"Witnesses leave fast. A phone number now is worth more than a statement later.":"Los testigos se van rápido. Un teléfono ahora vale más que una declaración después.",
+"See a doctor within 24 hours":"Vea a un médico en 24 horas",
+"A gap in treatment is the first thing insurers use to reduce your claim.":"Una demora en el tratamiento es lo primero que usan las aseguradoras para reducir su reclamo.",
+"Do not give a recorded statement":"No dé una declaración grabada",
+"You are not required to speak with the other driver's insurance company. Politely decline.":"No está obligado a hablar con la aseguradora del otro conductor. Decline con cortesía.",
+"Do not post about it online":"No publique nada en redes sociales",
+"Insurers review social media. A photo of you smiling can be used against you.":"Las aseguradoras revisan las redes. Una foto suya sonriendo puede usarse en su contra.",
+"Call Abrams & Taheri at 310.894.8000":"Llame a Abrams & Taheri al 310.894.8000",
+"Free evaluation, 24/7. We handle the insurers from here.":"Evaluación gratuita, 24/7. Nosotros nos encargamos de las aseguradoras.",
+"Call":"Llamar",
+"Text":"Mensaje",
+"Chat with us":"Chatee con nosotros",
+"Chat":"Chat",
+"Client portal":"Portal del cliente",
+"Client Login":"Acceso clientes"
+};
+const PH={"When and where it happened, whether you were treated, and whether an insurance company has contacted you.":"Cuándo y dónde ocurrió, si recibió tratamiento y si una aseguradora lo ha contactado."};
+const map=new WeakMap();let lang='en';
+function walk(node,fn){const w=document.createTreeWalker(node,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||['SCRIPT','STYLE'].includes(p.tagName)||p.closest('#chat,#portal-modal'))return NodeFilter.FILTER_REJECT;return n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});let n;const list=[];while(n=w.nextNode())list.push(n);list.forEach(fn);}
+function apply(to){
+  walk(document.body,n=>{
+    if(!map.has(n))map.set(n,n.nodeValue);
+    const orig=map.get(n);const key=orig.replace(/\s+/g,' ').trim();
+    if(to==='es'&&ES[key]){n.nodeValue=orig.replace(key,ES[key]);}else n.nodeValue=orig;
+  });
+  document.querySelectorAll('textarea,input[placeholder]').forEach(el=>{const o=el.dataset.ph||(el.dataset.ph=el.placeholder);el.placeholder=(to==='es'&&PH[o])||o;});
+  document.documentElement.lang=to;lang=to;
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===to?'true':'false'));
+  const prog=document.getElementById('chk-prog');if(prog){prog.textContent=prog.textContent.replace(/of 7 done|de 7 listos/,to==='es'?'de 7 listos':'of 7 done');}
+  try{localStorage.setItem('at-lang',to)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.l)));
+let saved=null;try{saved=localStorage.getItem('at-lang')}catch(e){}
+if(saved==='es')apply('es');
+})();
+
 document.getElementById('eval-form').addEventListener('submit',function(e){
   e.preventDefault();
   this.classList.add('sent');
